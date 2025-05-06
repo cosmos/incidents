@@ -6,13 +6,22 @@ Asymmetric Research discovered a critical vulnerability in the Ethereum light cl
 
 ## Root cause
 
-The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.
+The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.  A fake light client header could've led to draining of all of the funds escrowed on the Hub and Lombard.
 
 ## Critical decisions
 
 ### Emergency upgrade on the Hub
 
-We determined that the best path forward was to do an emergency upgrade on the Hub, which would allow us to migrate the light client. We made this decision under the assumption that the Eureka launch would incur a significant amount of volume between Ethereum Mainnet and Cosmos Hub and as such the issue needed to be patched as soon as possible.
+There were different pathways to mitigating the vulnerability that we could have taken:
+- delay the launch of IBC Eureka and patch the vulnerability publicly
+- do an emergency upgrade on the Hub and patch the vulnerability following our responsible disclosure and patch process with the involved teams only
+
+Ultimately, we decided to proceed with the launch launch given we had implemented mitigations to limit the risk:
+- we had the ability to set ratelimits on both sides of the bridge, meaning we could effectively limit the amount of funds at risk
+- we permissioned relaying to a trusted entity before launch, meaning the amount of potential attackers was limited and known to us
+
+We still made the decision to patch the vulnerability as soon as possible, given that we expected significant amounts of volume between Ethereum Mainnet and Cosmos (Hub + Lombard).
+Since the number of chains actively using Eureka was extremely limited and known to us during launch, we made the decision to do our coordinated emergency patch process with the Cosmos Hub and Lombard teams.
 
 ### Relaxing security assumptions
 
