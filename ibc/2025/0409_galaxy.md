@@ -12,7 +12,7 @@ The Ethereum light client did not correctly verify the sync committee, i.e. did 
 
 ### Emergency upgrade on the Hub
 
-We decided that the best path forward was to do an emergency upgrade on the Hub, which would allow us to migrate the light client. We made this decision under the assumption that the Eureka launch would incur a significant amount of volume between Ethereum Mainnet and Cosmos Hub and as such the issue needed to be patched as soon as possible.
+We determined that the best path forward was to do an emergency upgrade on the Hub, which would allow us to migrate the light client. We made this decision under the assumption that the Eureka launch would incur a significant amount of volume between Ethereum Mainnet and Cosmos Hub and as such the issue needed to be patched as soon as possible.
 
 ### Relaxing security assumptions
 
