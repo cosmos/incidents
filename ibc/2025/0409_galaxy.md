@@ -6,7 +6,7 @@ Asymmetric Research discovered a critical vulnerability in the Ethereum light cl
 
 ## Root cause
 
-The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that a pubkey is part of the committee. Additionally, an issue with pubkey verification allowed to use non-existing public keys, allowing to bypass the sync commitee signature check.
+The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.
 
 ## Critical decisions
 
