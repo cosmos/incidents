@@ -2,7 +2,7 @@
 
 ## What happened?
 
-Asymmetric Research discovered a critical vulnerability in the Ethereum light client we were using on the Cosmos Hub and Lombard. We proceeded with an emergency critical upgrade on the Hub, which gave us the authorization to migrate IBC Wasm light clients.
+Asymmetric Research discovered a critical vulnerability in the Ethereum light client we were using on the Cosmos Hub and Lombard. We proceeded with an emergency critical upgrade on the Hub, which gave us a temporary (24h) authorization to migrate IBC Wasm light clients.
 
 ## Root cause
 
