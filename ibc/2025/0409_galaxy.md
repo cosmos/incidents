@@ -8,39 +8,50 @@ Asymmetric Research discovered a critical vulnerability in the Ethereum light cl
 
 The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that a pubkey is part of the committee. Additionally, an issue with pubkey verification allowed to use non-existing public keys, allowing to bypass the sync commitee signature check.
 
-The reason we needed an emergency patch on the Hub is because we expected significant volume of tokens between Ethereum and the Hub. We could not migrate the light client itself in the upgrade, which meant that we needed to be given rights to migrate the light client ourselves.
+## Critical decisions
+
+### Emergency upgrade on the Hub
+
+We decided that the best path forward was to do an emergency upgrade on the Hub, which would allow us to migrate the light client. We made this decision under the assumption that the Eureka launch would incur a significant amount of volume between Ethereum Mainnet and Cosmos Hub and as such the issue needed to be patched as soon as possible.
+
+### Relaxing security assumptions
 
 Sync committee size verification was dropped because we had to support two hardforks at the same time and could not do it properly because of deadlines.
-
-## Action items
-
-- Set up security council on the Hub, similar to the one on Ethereum
-- Figure out a better critical emergency process between Hub <> ICL <> Hypha
-- Continuously validate threat models in external dependencies (for example - using Optimism's failure mode analysis)
-- Convert TODOs into potential security risks
 
 ## Learnings
 
 - We did not have the same tools used for security on the Hub (e.g. security council) as we did on Ethereum - for emergency upgrades this is a must
-- We did not have confidence on the level of security details we should reveal to whom
-- We did not have enough knowledge on how BLS aggregation works
-- We need to raise risky decisions earlier on (reducing type safety to hit deadlines)
-- We shipped security features (rate limits) that we had no concept of a plan for using
+- We did not predefine the level of information sharing with external contributors during a critical security incidnet
+- We did not have enough knowledge on how BLS aggregation works, which led to us misunderstanding the assumptions of an external dependency
+- We need to raise and track risky decisions that are related to security risks earlier on (reducing type safety to hit deadlines)
+- We shipped security features (rate limits) that we did not have a predefined plan for using
 - The Cosmos Hub's team should have been involved in the patching process
     - This makes coordinating with external partners (i.e. Hypha) much easier
 
+## Action items
+
+These are potential action items for Interchain Labs to implement in order to prevent similar issues in the future:
+
+- Set up security council on the Hub, similar to the one on Ethereum to oversee and manage security related upgrades and parameter changes
+    - This was not set up before launch due to the assumption that we could rely on the Cosmos Hub governance process. This assumption was broken during the incident due to the long voting period on the Hub.
+- Define a critical emergency process between Interchain Labs <> Hypha, ideally involving both entities in the patching process of the Cosmos Hub.
+    - There was no clear expectation on either side on how to handle information sharing during a critical security incident.
+- Continuously validate threat models in external dependencies (for example - using Optimism's failure mode analysis)
+    - Interchain Labs has done internal audits and modelling of potential threats, but we have not done this for external dependencies.
+- Convert any pending IBC Eureka engineering related TODOs into potential security risks left-over from the launch
+    - There are currently a few outstanding TODOs in the Eureka codebase that need to be tracked in case they are security risks.
+
 ## Timeline (UTC)
 
-- 2025-04-09 14:43: Issue reported by AR
-- 2025-04-09 15:00:	Triage has started by the Security + IBC teams
-- 2025-04-09 16:00:	Issue is triaged and verified, war-room has been created
-- 2025-04-09 16:07:	Decision to continue launch was made and decision how to upgrade the Cosmos Hub was made
-- 2025-04-09 17:00:	Access for all non-critical engineers was cutoff to production systems
-- 2025-04-09 18:00:	Hub team was notified about an imminent required emergency upgrade
-- 2025-04-09 18:20:	Hypha is notified about the same
+- 2025-04-09 14:43: Issue reported by Asymmetric Research
+- 2025-04-09 15:00:	Triage started by the Security + IBC teams
+- 2025-04-09 16:00:	Issue triaged and verified, war-room created
+- 2025-04-09 16:07:	Decision to continue launch and how to upgrade the Cosmos Hub made
+- 2025-04-09 17:00:	Access for all non-critical Interchain Labs engineers cutoff to production systems
+- 2025-04-09 18:00:	Hub and Hypha teams notified about an imminent required emergency upgrade
 - 2025-04-10 9:00:	Fix released by IBC team
-- 2025-04-10 10:00:	Fix is reviewed by AR
-- 2025-04-10 12:00:	Eureka is launched
-- 2025-04-10 21:00:	Lombard is migrated to the new light client
-- 2025-04-14 16:40:	Cosmos Hub is beginning the upgrade
+- 2025-04-10 10:00:	Fix reviewed and validated by Asymmetric Research
+- 2025-04-10 12:00:	Eureka launched
+- 2025-04-10 21:00:	Lombard migrated to the new light client
+- 2025-04-14 16:40:	Cosmos Hub began the upgrade
 - 2025-04-14 19:00:	Cosmos Hub resumed block production
