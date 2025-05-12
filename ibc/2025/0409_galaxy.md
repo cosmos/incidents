@@ -8,6 +8,8 @@ Asymmetric Research discovered a critical vulnerability in the Ethereum light cl
 
 The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.  A fake light client header could've led to draining of all of the funds escrowed on the Hub and Lombard.
 
+![Light Mode Diagram](../assets/incident-0409-light.svg#gh-light-mode-only)![Dark Mode Diagram](../assets/incident-0409-dark.svg#gh-dark-mode-only)
+
 ## Critical decisions
 
 ### Emergency upgrade on the Hub
