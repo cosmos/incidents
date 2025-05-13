@@ -6,9 +6,14 @@ Asymmetric Research discovered a critical vulnerability in the Ethereum light cl
 
 ## Root cause
 
-The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.  A fake light client header could've led to draining of all of the funds escrowed on the Hub and Lombard.
+The Ethereum light client did not correctly verify the sync committee, i.e. did not verify that each pubkey is in the committee. This allowed an attacker to trick the light client by generating a new sync committee with the same aggregate pubkey.  A fake light client header could've led to an infinite mint of Ethereum assets on the Cosmos Hub and Lombard.
 
-![Light Mode Diagram](../assets/incident-0409-light.svg#gh-light-mode-only)![Dark Mode Diagram](../assets/incident-0409-dark.svg#gh-dark-mode-only)
+![Light Mode Diagram](../../assets/incident_report_20250409/explanation-light.svg#gh-light-mode-only)![Dark Mode Diagram](../../assets/incident_report_20250409/explanation-dark.svg#gh-dark-mode-only)
+
+A potential attack could've looked like this:
+- attacker generates a malicious light client header
+- attacker generates malicious MsgRecvPacket, minting themselves unlimited amount of Ethereum assets
+- attacker, having the permissioned relayer keys, submits MsgUpdateClient (with the forged light client header) and the malicious MsgRecvPacket on the Cosmos Hub/Lombard networks.
 
 ## Critical decisions
 
