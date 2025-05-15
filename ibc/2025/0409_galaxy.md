@@ -23,7 +23,7 @@ There were different pathways to mitigating the vulnerability that we could have
 - delay the launch of IBC Eureka and patch the vulnerability publicly
 - do an emergency upgrade on the Hub and patch the vulnerability following our responsible disclosure and patch process with the involved teams only
 
-Ultimately, we decided to proceed with the launch launch given we had implemented mitigations to limit the risk:
+Ultimately, we decided to proceed with the launch given we had implemented mitigations to limit the risk:
 - we had the ability to set ratelimits on both sides of the bridge, meaning we could effectively limit the amount of funds at risk
 - we permissioned relaying to a trusted entity before launch, meaning the amount of potential attackers was limited and known to us
 
