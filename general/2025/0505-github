@@ -1,0 +1,87 @@
+# Cosmos SDK - GitHub Contributor - Malicious Actor - 2025-05-05
+
+## What happened?
+
+Between summer 2022 and November 2024, a GitHub contributor operating under the alias cool-develope contributed to several Cosmos repositories while affiliated with a DPRK IT operation. This individual was employed by previous Core Maintainer teams (Regen Network Development, and Binary Builders) unknowingly, under the legacy third-party core stack maintenance model, prior to the formation of Interchain Labs (ICL).
+
+When ICL assumed formal responsibility for the Cosmos Core Stack in November 2024, this third-party maintenance model was deprecated, and all development was concentrated back on ICL as the sole development group. ICL introduced rigorous security policies, hiring protocols, and access controls. These changes ultimately led to the identification and removal of the actor. 
+
+A full investigation, conducted in partnership with Asymmetric Research (AR), has since confirmed that no active vulnerabilities or malicious code exist in the Cosmos Core Stack as a result of this actor’s contributions. Both teams performed a review and audit of all code (regardless of production state) contributed by this actor; and further strengthened the policies that prevented the stack being affected during ICL’s tenure. Regen and Binary both responded constructively upon discovery, providing records and supporting the investigation and code audits. The contributor retained limited access until February 2025, with activity in the following repositories:
+
+- [`cosmos-sdk`](https://github.com/cosmos/cosmos-sdk)
+- [`iavl`](https://github.com/cosmos/iavl)
+- [`cosmos-db`](https://github.com/cosmos/cosmos-db)
+
+While we have found no indication of malicious code contributed by the DPRK actor, we are incentivizing further community review through our bounty program (read below), and will be completely deprecating the codebase through our planned release of IAVL v2 which is a full rewrite.
+
+Relevant commit history:
+
+- [https://github.com/cosmos/iavl/commits?author=cool-develope](https://github.com/cosmos/iavl/commits?author=cool-develope)
+- [https://github.com/cosmos/cosmos-sdk/commits?author=cool-develope](https://github.com/cosmos/cosmos-sdk/commits?author=cool-develope)
+- [https://github.com/cosmos/cosmos-db/commits?author=cool-develope](https://github.com/cosmos/cosmos-db/commits?author=cool-develope)
+
+## Root cause
+
+Under the legacy distributed development model, access management varied across teams and vendors. The actor’s ability to retain limited access past his termination was due to former uneven offboarding practices that existed prior to ICL’s full consolidation of Cosmos core development.
+
+However, once ICL took over in late November 2024, ICL and AR implemented a series of security reforms—including access reviews, revocation of legacy permissions, and the centralization of administrative controls. The proactive security efforts had effectively neutralized the risk before the threat was surfaced externally.
+
+## Critical decisions
+
+### Proactive Access Hardening
+
+The actor was effectively thwarted by ICL’s restructuring of the Cosmos development environment and the security audits initiated with AR. Legacy and non-essential contributor access had already been significantly reduced through manual review and the implementation of formal permissioning systems.
+
+### Rapid Audit and Containment
+
+Upon identification, ICL and AR completed remaining access revocations, rotated credentials, reviewed all affected commits, and coordinated to ensure no persistent access routes remained. An audit of binaries and CI artifacts further confirmed the absence of threats in production environments. Notably, the majority of this actor’s contributions to the Cosmos SDK were tied to the now cancelled v2 effort, as a result of the ICL’s stack roadmap reorganization. Contributions made to IAVL were audited by multiple independent teams, and no evidence of vulnerabilities or malicious behavior was found.
+
+
+## HackerOne Follow-Up
+
+To encourage transparency and security research, ICL and AR doubled the bounty rewards on the Cosmos [HackerOne](https://hackerone.com/cosmos) program for a one-month period beginning Jun 8, 2025. This applies to any qualifying security issues linked to contributions from the `cool-develope` account.
+
+## Learnings
+
+- Malicious actors are starting to operate through contracts with the U.S.-based entities and are able to gain access by impersonating legitimate web3 contributors, even using fabricated referrals and shadowing employees
+- Final audit of the SDK contributions determined that over 70% of the actor’s pull requests involved the `store/v2` component, which was deprecated prior to production deployment. Remaining contributions were limited to non-critical areas, such as test refactoring and administrative updates. Binaries were inconsequential.
+- IAVL contributions were made to version 1.2.x—but analysis showed no evidence of malicious insertions
+- Most IAVL PRs involved fixing bugs from earlier implementations, consistent with issues seen in the wider IAVL codebase
+- Multiple reviewers from prior ecosystem teams (e.g., dYdX, Cronos, Osmosis) had approved the live code, and the code had received audits with each release
+- Although the actor’s contributions exhibited substandard quality, there was no evidence of deliberate compromise
+- Relying on third-party vendor policies can introduce some risk to critical systems
+- Preventative investments in access audits and security partnerships were directly responsible for mitigating this threat
+- Continuous auditing, rotation of keys, and permission reviews must remain core to ICL's operational practices
+
+## Action items
+
+- [ICL] Temporarily doubled bounty rewards on the [Cosmos HackerOne program](https://hackerone.com/cosmos) for incidents linked to `cool-develope`
+- [AR] Completed commit triage for all contributions by `cool-develope`
+- [ICL] Removed legacy maintainer team access from Cosmos GitHub
+- [ICL] Finalized removal of binaries flagged as potentially unsafe
+- [ICL] Enforced GitHub permission rule sets and branch protection
+- [AR] Engaged third-party binary analysts (e.g., Mandiant)
+- [ICL] Updated KYC and background check policies for all external contributors
+- [ICL] Established administrator separation for GitHub and Google infrastructure
+- [ICL] Documented and published a public report (post legal review)
+
+## Timeline (UTC)
+
+- 2025-05-05T00:00:00Z — SEAL flags contributor `cool-develope` as malicious actor
+- 2025-05-05T20:06:00Z — Incident reported internally to AR
+- 2025-05-05T21:00:00Z — Regen and Binary Builders informed
+- 2025-05-05T22:23:47Z — Incident officially begins
+- 2025-05-06T12:00:00Z — Regen and Binary Builders provided full access logs and relevant records to support the investigation
+- 2025-05-05T23:18:33Z — Approval granted to revoke legacy contributor teams
+- 2025-05-06T00:16:49Z — SEAL loop-in continues; AR and ICL extend investigation team
+- 2025-05-06T10:48:18Z — Remaining GitHub access removed from legacy teams
+- 2025-05-06T14:03:49Z — GitHub org settings audited
+- 2025-05-06T19:02:00Z — Potential malicious binaries removed
+- 2025-05-07T13:01:30Z — GitHub deploy keys disabled
+- 2025-05-07T13:52:01Z — Direct repo access restricted to formal access teams
+- 2025-05-08T19:00:00Z — AR began collaboration with Mandiant to reverse engineer two Go binaries using both manual review and automated analysis tools.
+- 2025-05-20T12:03:00Z — Mandiant/AR delivered final binaries report: no suspicious behavior identified in binaries based on triage and context provided
+- 2025-05-20T14:40:00Z — AR completed first pass review of all commits with no indications of malicious behavior
+- 2025-05-20T18:18:00Z — ICL team assigned to SDK/IAVL began secondary audit of all contributions
+- 2025-05-27T19:22:00Z — Final report completed by ICL team: no active vulnerabilities or evidence of malicious behavior linked to the actor
+
