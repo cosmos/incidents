@@ -4,7 +4,7 @@ This document summarizes all action items from the retrospectives in the `hub/20
 
 ## Preventive Action Items
 
-These action items focus on preventing future incidents through improved testing, build processes, and system architecture changes. They aim to catch issues earlier in the development cycle and eliminate sources of non-deterministic behavior that have caused consensus failures.
+These action items focus on preventing future incidents through improved testing, build processes, and system architecture changes. They aim to catch issues earlier in the development cycle.
 
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
@@ -34,7 +34,7 @@ These action items aim to improve monitoring and detection capabilities to ident
 
 ## Response Action Items
 
-These action items focus on improving incident response procedures and coordination between teams. They establish clear guidelines and processes to enable faster, more effective responses when issues occur.
+These action items focus on improving incident response procedures, automated remediations to stop the bleeding, and coordination between teams. They establish clear guidelines, processes and automations to enable faster, more effective responses when issues occur.
 
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
@@ -45,7 +45,7 @@ These action items focus on improving incident response procedures and coordinat
 
 ## Recovery Action Items
 
-Currently no recovery-specific action items have been identified. Recovery procedures are partially addressed through the response action items above, particularly around rollback optimization and emergency coordination processes.
+These action items focus on improving recoverability of incidents after the initial stop-the-bleeding responses.
 
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
