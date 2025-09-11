@@ -42,6 +42,7 @@ These action items focus on improving incident response procedures, automated re
 | Make proposal to reduce governance voting period parameters | [0414_upgrade.md](2025/0414_upgrade.md) | Hypha | To allow for expedited proposals to coordinate halt height in an emergency |
 | Test impact of pruning configuration in rollback command | [0414_upgrade.md](2025/0414_upgrade.md) | Hypha | To reduce rollback time |
 | Define a critical emergency process between Interchain Labs <> Hypha | [0414_upgrade.md](2025/0414_upgrade.md) | ICL | From parent retro |
+| Adopt Celestia's upgrade mechainism | | Team| |
 
 ## Recovery Action Items
 
