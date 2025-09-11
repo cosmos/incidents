@@ -4,6 +4,8 @@ This document summarizes all action items from the retrospectives in the `hub/20
 
 ## Preventive Action Items
 
+These action items focus on preventing future incidents through improved testing, build processes, and system architecture changes. They aim to catch issues earlier in the development cycle and eliminate sources of non-deterministic behavior that have caused consensus failures.
+
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
 | Adjust feemarket params | [0127_block_times.md](2025/0127_block_times.md) | ICL | Temporary stopgap |
@@ -22,6 +24,8 @@ This document summarizes all action items from the retrospectives in the `hub/20
 
 ## Detective Action Items
 
+These action items aim to improve monitoring and detection capabilities to identify issues before they become critical incidents. Enhanced telemetry and visibility will enable faster diagnosis and response to network anomalies.
+
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
 | Enable additional telemetry for rechecked transaction failures and peer disconnects | [0127_block_times.md](2025/0127_block_times.md) | Team | Kz: who is monitoring this? |
@@ -29,6 +33,8 @@ This document summarizes all action items from the retrospectives in the `hub/20
 | Subscribe to security alerts | [0207_upgrade.md](2025/0207_upgrade.md) | ICL | |
 
 ## Response Action Items
+
+These action items focus on improving incident response procedures and coordination between teams. They establish clear guidelines and processes to enable faster, more effective responses when issues occur.
 
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
@@ -38,6 +44,8 @@ This document summarizes all action items from the retrospectives in the `hub/20
 | Define a critical emergency process between Interchain Labs <> Hypha | [0414_upgrade.md](2025/0414_upgrade.md) | ICL | From parent retro |
 
 ## Recovery Action Items
+
+Currently no recovery-specific action items have been identified. Recovery procedures are partially addressed through the response action items above, particularly around rollback optimization and emergency coordination processes.
 
 | Action Item | Source | Owner | Notes |
 |-------------|--------|-------|-------|
