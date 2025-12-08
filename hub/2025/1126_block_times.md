@@ -7,8 +7,7 @@
 - Impact: Slower block times and failed transactions.
 - Root Causes: Multi-send transactions overloaded block processing in the validator nodes.
 - Trigger: Multiple multi-send transactions being sent to the network.
-- Resolution: Multi-send transactions stopped being sent to the Hub and the mempool cleared eventually.
-- Missing validators started signing blocks after they caught up with the rest of the network.
+- Resolution: Multi-send transactions stopped being sent to the Hub and the mempool cleared eventually. Missing validators started signing blocks after they caught up with the rest of the network.
 - Detection: Hypha received alerts for validator downtime, high transaction failure rate, and chain slowdown.
 
 # Action Items
